@@ -7,7 +7,7 @@ public class Solution{
   
   public String solution(String s, int k){
     LinkedList<Character> list = new LinkedList<Character>();
-    String newS = s.replaceAll("-","");
+    String newS = s.replaceAll("-","").toUpperCase();
     
     for(int i = 0; i<newS.length();i++){
       list.add(newS.charAt(i));
@@ -15,7 +15,7 @@ public class Solution{
     
     int mod = list.size()%k;
     
-    int newListSize = list.size() - 1 + (8/k);
+    int newListSize = list.size() - 1 + (s.length()/k);
     
     if(mod == 0){
       for(int i = k; i<newListSize; i = i + k + 1){
@@ -39,9 +39,9 @@ public class Solution{
   
   
   public static void main(String[] args){
-    String key = "ab-13424-6";
+    String key = "r099";
     Solution test = new Solution();
-    String n = test.solution(key,4);
+    String n = test.solution(key,1);
     System.out.println("Original key:  " + key);
     System.out.println("New key:  " + n);
     
