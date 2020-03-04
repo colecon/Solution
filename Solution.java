@@ -1,0 +1,49 @@
+//Author: Cole Constantino
+import java.util.*;
+
+public class Solution{
+  String string;
+  int k;
+  
+  public String solution(String s, int k){
+    LinkedList<Character> list = new LinkedList<Character>();
+    String newS = s.replaceAll("-","").toUpperCase();
+    
+    for(int i = 0; i<newS.length();i++){
+      list.add(newS.charAt(i));
+    }
+    
+    int mod = list.size()%k;
+    
+    int newListSize = list.size() - 1 + (s.length()/k);
+    
+    if(mod == 0){
+      for(int i = k; i<newListSize; i = i + k + 1){
+        list.add(i,'-');
+      }
+    }
+    else{
+      for(int i = mod; i<newListSize;i = i + k + 1){
+        list.add(i,'-');
+      }
+    }
+    
+    StringBuilder sb = new StringBuilder();
+    for(Character c : list){
+      sb.append(c);
+    }
+    String finalString = sb.toString();
+    
+    return finalString;
+  }
+  
+  
+  public static void main(String[] args){
+    String key = "ab-1234-c";
+    Solution test = new Solution();
+    String n = test.solution(key,4);
+    System.out.println("Original key:  " + key);
+    System.out.println("New key:  " + n);
+    
+  }
+}
